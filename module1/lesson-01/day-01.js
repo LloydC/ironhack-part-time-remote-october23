@@ -2,6 +2,12 @@
 let firstName = "Jon"; // "" '' String
 let lastName = "Chambrier"; // String
 
+firstName = "Lloyd"
+
+// let fullName = firstName + " " +lastName;
+let fullName = `${firstName} ${lastName}` // Template literals syntax
+
+console.log(fullName)
 const age = 33; // Number
 const email = "lloydchambrier@gmail.com";
 
@@ -20,6 +26,9 @@ const favoriteBook = {
     pages: 98,
     genres: ["Strategy", "Management", "Leadership"]
 }; // object
+
+console.log(favoriteBook.bookName)
+console.log(favoriteBook["author"])
 
 let test; // undefined
 // test = "Hey"
