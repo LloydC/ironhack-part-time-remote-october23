@@ -175,14 +175,30 @@ starRectangle(5,4)
 // i.e: [2,5,8] ---> 5
 //      [1,2,3] ---> 2
 
+let clientsList = [
+    {
+        name: 'John Doe',
+        income2023: [2000,3000,4000,2000,3000,4000]
+    },
+    {
+        name: 'Jane Doe',
+        income2023: [2500,3500,4600,2700,8000,14000]
+    }
+    
+]
+
 function average(array){
     let sum = 0;
 
     for(let i = 0; i < array.length; i++){
-        sum += array[i];
+        sum += array[i]; // sum = sum + array[i]
     }
 
-    return sum/array.length;
+    return sum/array.length; // 3
+}
+
+for(let i = 0; i < clientsList.length; i++){
+    console.log(`${clientsList[i].name} average income is ${average(clientsList[i].income2023)}`)
 }
 
 // console.log(average([2,5,8]))
