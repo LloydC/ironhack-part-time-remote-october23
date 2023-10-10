@@ -60,8 +60,8 @@ if (age <= 16) {
  
 // console.log(`Your favorite character is from the house ${house}.`);
 
-const houseName = "Podrick";
-let house = '';
+const houseName = "Sansa";
+let house = null;
  
 switch (houseName) {
   case 'Khal Drogo':
