@@ -10,13 +10,6 @@
 // 3. Start cooking the cake
 
 
-// Add countries dataset
-// Add questions to filter countries by using certain traits
-
-// Add GOT dataset
-// Add questions to filter dataset by using certain traits
-
-
 //Array map examples
 const cities = ['miami', 'barcelona', 'madrid', 'amsterdam', 'berlin', 'sao paulo', 'lisbon', 'mexico city', 'paris'];
 

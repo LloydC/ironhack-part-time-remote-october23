@@ -5039,15 +5039,82 @@ const characters = [
     ];
 
     // Return the list of all the characters from house Stark
+
+// 1. Go through the dataset to understand its structure
+// 2. Find where in the dataset "Stark" is defined --> where houseName: "Stark"
+// 3. Use .filter() to filter the array according to where "Stark" is defined
+
+const starkCharacters = characters.filter(character => character.houseName === "Stark");
+// console.log("starkCharacters", starkCharacters)
+
+
+
     // Return the list of characters that have been killed by Gregor Clegane
-    
+
+    // 1. Go through the dataset to understand its structure
+    // 2. Find where in the dataset you can identify if someone has been killed by Gregor Clegane 
+    // 3. Use .filter() to filter the array according to them being killed by Gregor Clegane
+
+    //--> killedBy : ["Gregor Clegane"]
+
+    const charactersKilled = characters.filter(character => character?.killedBy?.includes("Gregor Clegane"))
+    // console.log('characterssKilled', charactersKilled)
+
     // Create a function which takes a parameter "houseName" 
-    // The function should return the list of chracters that are a part of the specified house.
-    // The function should check that the houseName entered exists and if the user enters an incorrect housename
+    // 1/The function should return the list of characters that are a part of the specified house.
+    // 2/ The function should check that the houseName entered exists and if the user enters an incorrect housename
     // it should print out "The houseName you entered doesn't exist or is typed incorrectly"
+    const filterByHouseName = (enteredHouseName) => {
+      // Check in the array "characters" if the entered houseName exists
+        const loweredcaseName = enteredHouseName.toLowerCase();
+      // 1. Go through the list of characters and check if the houseName property has the entered value
+    if(characters.some(character => character?.houseName === enteredHouseName)){
+        // return the list of characters that are a part of the specified house.
+        const filteredCharacters = characters.filter(character => (character?.houseName === enteredHouseName))
+        console.log(filteredCharacters);
+        return filteredCharacters;
+    }
+    else{
+        console.log("The houseName you entered doesn't exist or is typed incorrectly");
+    }
+    }
+    // filterByHouseName("Stark")
+    // filterByHouseName("Lumen")
+    // filterByHouseName("Lannister")
 
     // Create a function which takes a parameter "killedBy"
-    // The function should return the list of characters killed by the entered name.
-    // The function should check that the name entered is correct and if the user enters an incorrect name
+    // 1/ The function should return the list of characters killed by the entered name.
+    // 2/ The function should check that the name entered is correct and if the user enters an incorrect name
     // it should print out "the character name you entered is incorrect or incorrectly typed"
-    // If the character hasn't killed anyone, the function should return "No one has been killed by this character"
+    // 3/ If the character hasn't killed anyone, the function should return "No one has been killed by this character"
+
+
+    const killedCharacters = (killedBy) => {
+        // .characterName === killedBy
+// Check that the entered name is not in any of the killBy property 
+
+        // if(characters.some(character => !character?.killedBy?.includes(killedBy))){
+        //     console.log("No one has been killed by this character");
+        // }
+
+        if(characters.some(character => character?.killedBy?.includes(killedBy))){
+            //check that the name 'killedBy' entered is correct
+            const killList = characters.filter(character => character?.killedBy?.includes(killedBy))
+            // => killList.length === 0
+            console.log(killList.length)
+            return killList;  
+        }
+        // if the enteredName is correct and they are not inside a killBy property
+        // then the person hasn't killed anyone 
+        else if(characters.some(character => character.characterName === killedBy)){
+            console.log("No one has been killed by this character");
+        }
+        else {
+            console.log("the character name you entered is incorrect or incorrectly typed");
+        }
+       
+    }
+
+    killedCharacters("Sandor Clegane")
+    killedCharacters("Tywin Lannister")
+    killedCharacters("ned stark")
