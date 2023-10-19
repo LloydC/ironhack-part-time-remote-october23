@@ -1,0 +1,22 @@
+body {
+    background-image: url("../images/image\ 1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: 'Nunito';
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+#list-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-items {
+    margin-right: 12px;
+}
