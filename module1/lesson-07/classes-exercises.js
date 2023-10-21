@@ -5,11 +5,18 @@
 // Be sure to test those methods on the instances you created earlier to make sure they work
 
 class Human {
-    constructor(name, gender, age, calories){
+    // const newHuman = new Human('Lloyd', 'male', 33, 1000, 'brown')
+    constructor(name, gender, age, calories, eyesColor){
         this.name = name;
         this.gender = gender;
         this.age = age;
-        this.calories = calories
+        this.calories = calories;
+        this.eyesColor = eyesColor;
+        this.nbOfLegs = 2;
+    }
+
+    introduction(){
+        console.log(`Hi, I am ${this.name}, I have ${this.age} old and I am a ${this.gender}`)
     }
 
     eatFood(food){
@@ -29,23 +36,52 @@ class Food {
         this.carbs = carbs * 4;
         this.fat = fat * 9;
     }
+    // Add a method printCalories() for class Food 
+    // that prints out how many calories a specific food provides
+    printCalories(){
+        let sum = this.protein + this.carbs + this.fat;
+        console.log(`${this.name} has ${sum} calories`);
+    }
 }
 
-const firstHuman = new Human("John Doe", 34, "male", 1000);
+const firstHuman = new Human("John Doe", 34, "male", 1000, 'brown');
 const firstFood = new Food( "Alloco", 0, 100, 50);
-firstHuman.eatFood(firstFood)
+
 console.log('firstHuman', firstHuman)
 console.log('firstFood', firstFood)
-// Add a method printCalories() for classFood that prints out how many calories a specific food provides
+
+firstHuman.eatFood(firstFood)
+firstHuman.introduction()
+firstFood.printCalories()
 
 // i.e: Eating banana will add 89 calories
 
 // Create instances of each class and print them to the console to confirm they work
 
 // Exercise 3
-// Create a subclass Man from class Human, it should have it's gender set to 'male' automatically
+// Create a subclass Man from class Human, 
+// it should have it's gender set to 'male' automatically
+class Man extends Human {
+    constructor(name, age, calories, eyesColor){
+        super(name, 'male', age, calories, eyesColor)
+       
+    }
+}
 
+const firstMan = new Man('Giovanni', 36, 1200, 'blue');
+console.log('firstMan', firstMan);
+firstMan.introduction();
 // Exercise 4
 // Create a subclass Woman from class Human, it should have it's gender set to 'female' automatically
+class Woman extends Human {
+    constructor(name, age, calories, eyesColor){
+        super(name, 'female', age, calories, eyesColor)
+       
+    }
+}
+
+const firstWoman = new Woman('Beyonce', 42, 1200, 'brown');
+firstWoman.eatFood(firstFood)
+console.log('firstWoman', firstWoman)
 
 // Create instances of each class and print them to the console to confirm they work
