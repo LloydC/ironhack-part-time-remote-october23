@@ -1,0 +1,57 @@
+body{
+    background: #E5E5E5;
+    font-family: "Nunito Sans";
+}
+
+nav {
+    width: 100vw;
+    height: 32px;
+    
+    /* margin-left: 39px;
+    margin-right: 39px;
+    margin-top: 60px; */
+    /* border: 1px solid black; */
+   padding-left: 60px;
+   padding-right: 60px;
+   padding-top: 30px;
+
+   color: #19191D;
+
+
+font-size: 12px;
+font-weight: 400;
+line-height: 14px;
+}
+
+ul, #navigation-items {
+    display: flex;
+}
+
+ul {
+    justify-content: space-between;
+}
+
+.call-to-action {
+    background: black;
+    color: white;
+}
+
+.items {
+    margin-right: 32px;
+}
+
+#lawyer-info {
+    /* width: 100vw; */
+    /* margin: 0 auto; */
+    height: 500px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 18px;
+}
+
+#lawyer-info > p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
