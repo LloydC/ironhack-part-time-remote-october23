@@ -1,0 +1,71 @@
+html {
+    font-size: 10px;
+}
+body {
+    /* background-color: black; */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#hamburger-menu {
+    display: none;
+}
+
+nav {
+    width: 100vw;
+    height: 7rem; /*70 px*/
+    background-color: brown;
+    color: white;
+    display: flex;
+    align-items: center;
+    /* background-color: red; */
+}
+
+ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+}
+/* Mobile Version */
+@media (max-width: 650px) {
+    #hamburger-menu {
+        display: block;
+    }
+
+    li {
+        font-size: 2em; /* 24px */
+    }
+
+    #nav-links {
+        display: none;
+    }
+
+}
+/* Tablet Version */
+@media (min-width: 650px) and (max-width: 999px) {
+    body {
+      /* background-color: green; */
+    }
+
+    #nav-links {
+        display: flex;
+    }
+
+    #nav-links > li {
+        margin-right: 2rem;
+    }
+  }
+/* Desktop Version */
+@media (min-width: 1000px) {
+    body {
+      /* background-color: blue; */
+    }
+
+    #nav-links {
+        display: flex;
+    }
+
+    #nav-links > li {
+        margin-right: 2rem;
+    }
+}
