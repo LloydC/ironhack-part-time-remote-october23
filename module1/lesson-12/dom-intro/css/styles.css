@@ -1,0 +1,14 @@
+.something {
+    color:cadetblue;
+}
+
+.somethingElse {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 18px;
+}
+
+.profile-image {
+    width: 300px;
+    height: 200px;
+    border-radius: 50%;
+}
