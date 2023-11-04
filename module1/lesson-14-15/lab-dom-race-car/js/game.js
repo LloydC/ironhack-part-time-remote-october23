@@ -4,7 +4,14 @@ class Game {
         this.startScreen = document.getElementById('game-intro');
         this.gameScreen = document.getElementById('game-screen');
         this.gameEndScreen = document.getElementById('game-end');
-        this.player = null; //  new Player()
+        this.player = new Player(
+            this.gameScreen,
+            10,
+            550,
+            100,
+            100,
+            './images/car.png'
+        ); //  new Player()
         this.width = 600;
         this.height = 600;
         this.obstacles = []; // new Obstacle()
@@ -36,6 +43,7 @@ class Game {
 
     update(){
         // Return the new position of the car to update the game
+        this.player.move();
         // Return the new positions of the obstacles to update the game
     }
 }
