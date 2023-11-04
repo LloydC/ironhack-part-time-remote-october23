@@ -10,8 +10,11 @@ window.onload = function () {
     game.start(); // execute the start method
   }
 
+  function restartGame() {
+    location.reload();
+  }
+
   function handleKeydown(event) {
-    console.log('event', event)
     const key = event.key;
     const possibleKeystrokes = [
       "ArrowLeft",
@@ -44,6 +47,11 @@ window.onload = function () {
 
   startButton.addEventListener("click", function () {
     startGame();
+  });
+
+  restartButton.addEventListener("click", function () {
+    // Call the restartGame function when the button is clicked
+    restartGame();
   });
 
    // Add the handleKeydown function as an event listener for the keydown event
