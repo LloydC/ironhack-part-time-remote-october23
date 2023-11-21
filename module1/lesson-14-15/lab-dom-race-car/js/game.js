@@ -11,17 +11,16 @@ class Game {
             100,
             100,
             './images/car.png'
-        ); //  new Player()
+        ); 
         this.width = 600;
         this.height = 600;
-        this.obstacles = []; // new Obstacle()
+        this.obstacles = []; 
         this.score = 0;
         this.lives = 3;
         this.gameIsOver = false;
     }
 
     start(){
-        
         this.gameScreen.style.width = `${this.width}px`;
         this.gameScreen.style.height = `${this.height}px`;
         this.startScreen.style.display = 'none';
