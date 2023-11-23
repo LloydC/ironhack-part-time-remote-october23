@@ -1,5 +1,5 @@
 const http = require('http'); // loading the package for our server
-const port = 3000; // assigning an entry point/port for our server
+const port = 3002; // assigning an entry point/port for our server
 
 const server = http.createServer((request, response) => { // creating and configuring our server
     console.log(`Someone has requested ${request.url}`)
