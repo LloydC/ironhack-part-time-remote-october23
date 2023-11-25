@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My first view</title>
+  <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+    <h1>User Profile</h1>
+
+    <p>{{name}}</p>
+    <p>{{job}}</p>
+
+    {{#if age}}
+        <p>{{age}}</p>
+    {{else}}
+        <p>Please submit your age when you can :)</p>
+    {{/if}}
+
+<p>List of traveled cities:</p>
+    <ul>
+        {{#each cities}}
+            {{#if @first}}
+                <li><b>First traveled city was {{this}}</b></li>
+            {{else if @last}}
+                <li><i>Most recent city you traveled to is {{this}}</i></li>
+            {{else}}
+                <li>{{this}}</li>
+            {{/if}}
+        {{/each}}
+    </ul>
+
+    <p>Address</p>
+    {{#with address}}
+        <p>{{street}}, {{number}}</p>
+    {{/with}}
+
+    
+</body>
+</html>

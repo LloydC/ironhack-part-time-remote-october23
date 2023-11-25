@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Collegiate+One&family=Lato&family=Montserrat:wght@600&display=swap');
+
+.homepage-font {
+    font-family: 'Alumni Sans Collegate';
+}
+
+.players-font {
+    font-family: 'Montserrat' ;
+}
+
+.teams-font {
+    font-family: 'Lato';
+}
+
+.home-bg {
+    background-color: antiquewhite;
+}
+
+.players-bg {
+    background-color: bisque;
+}
+
+.teams-bg {
+    background-color: burlywood;
+}
