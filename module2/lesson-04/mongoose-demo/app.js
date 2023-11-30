@@ -1,8 +1,8 @@
-const express = require('express')
-const port = 3000;
+const app = require('express')()
+const port = 3001;
 const mongoose = require('mongoose');
 
-const app = express()
+// const app = express()
 
 app.set("views", "./views")
 app.set("view engine", "hbs")
@@ -11,6 +11,7 @@ const User = mongoose.model('User', { username: String, age: Number, hobbies: [S
 const Cat = mongoose.model('Cat', { name: String });
 
 mongoose.connect('mongodb://127.0.0.1:27017/mongoose-demo')
+        //.then(()=> User.create({username: 'kanyewest', age: 45, hobbies: ['Basketball']}))
         .catch(err => console.log(err))
 
 app.get("/", (req, res)=>{
@@ -19,6 +20,19 @@ app.get("/", (req, res)=>{
             console.log(allUsers)
             res.render("index", { data: allUsers })
         })
+})
+
+app.get('/profile/:username', (req, res)=>{
+    console.log('req.params', req.params)
+    const username = req.params.username;
+
+    User.findOne({username: username})
+        .then( foundUser => {
+            console.log("foundUser", foundUser)
+            res.render("profile", {user: foundUser});
+        })
+    
+
 })
 
 app.listen(port, ()=> console.log(`App is running on port ${port}`))

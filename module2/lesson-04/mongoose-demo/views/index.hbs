@@ -2,6 +2,6 @@
 
 <ul>
     {{#each data}}
-        <li>{{this.username}} is {{this.age}} years old</li>
+        <li><a href="/profile/{{this.username}}">{{this.username}}</a> is {{this.age}} years old</li>
     {{/each}}
 </ul>
