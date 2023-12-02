@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 app.get("/searchResults", (req, res) => {
   // req.query --> Query String
   console.log('req.query',req.query)
-  const { movieName, movieDirector } = req.query; // --> const movieName = req.query.movieName
+  const { movieName } = req.query; // --> const movieName = req.query.movieName
   const lowercaseMovieName = movieName.toLowerCase();
 
   axios
