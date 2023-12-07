@@ -20,10 +20,27 @@ router.get('/books', (req, res, next) => {
     });
 });
 
+// GET route to display the form
+// we still didn't create any HBS files so this will be our next task
+router.get('/books/create', (req, res) => res.render('books/book-create.hbs'));
+
+router.post('/books/create', (req, res) => {
+  //
+  console.log('req.body', req.body)
+  // const newBook = { title: req.body.title, description: req.body.description}
+  // Book.create(newBook)
+  Book.create(req.body)
+      .then(()=> res.redirect('/books'))//redirect to the homepage/list of books
+      .catch(err => console.log(err))
+  
+})
+
 // GET route to retrieve and display details of a specific book
+
+
 router.get('/books/:bookId', (req, res) => {
   const bookId = req.params.bookId;
-  
+
   Book.findOne({_id: bookId})
       .then(foundBook => {
         console.log('foundBook', foundBook);

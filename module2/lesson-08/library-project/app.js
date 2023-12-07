@@ -6,6 +6,9 @@ const port = 3000;
 app.set('views', __dirname + `/views`);
 app.set('view engine', 'hbs');
 
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
 mongoose.connect('mongodb://localhost:27017/library-project')
         .then(() => console.log('Connection to DB successful'))
         .catch(err => console.log(err))
