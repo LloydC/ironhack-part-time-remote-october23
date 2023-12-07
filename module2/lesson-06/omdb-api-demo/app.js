@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 
 app.get("/searchResults", (req, res) => {
   // req.query --> Query String
-  console.log('req.query',req.query)
+  // console.log('req.query',req.query)
   const { movieName } = req.query; // --> const movieName = req.query.movieName
   const lowercaseMovieName = movieName.toLowerCase();
 
@@ -34,7 +34,7 @@ app.get("/searchResults", (req, res) => {
     )
     .then((OMDBResponse) => {
       const { Search, totalResults } = OMDBResponse.data;
-      console.log(OMDBResponse.data)
+      // console.log(OMDBResponse.data)
 
       res.render("search-results", { movieName, Search, totalResults });
     })
@@ -50,7 +50,7 @@ app.get("/movie/:movieId", (req, res) => {
       `http://www.omdbapi.com/?apikey=${process.env.OMDB_API_Key}&i=${movieId}`
     )
     .then((OMDBMovie) => {
-      console.log(OMDBMovie.data);
+      console.log("OMDBMovie data",OMDBMovie.data);
       const movie = OMDBMovie.data;
 
       res.render("movie", { movie });
