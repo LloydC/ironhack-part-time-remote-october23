@@ -60,7 +60,7 @@ app.get('/profile/:username', (req, res)=>{
     console.log('req.params', req.params)
     const username = req.params.username;
 
-    User.findOne({username: username})
+    User.findOne({ username })
         .then( foundUser => {
             console.log("foundUser", foundUser)
             res.render("profile", {user: foundUser});
