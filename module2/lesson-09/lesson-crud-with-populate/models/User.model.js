@@ -3,7 +3,8 @@ const { Schema, model } = require("mongoose");
 const userSchema = new Schema(
   {
     username: String,
-    posts: [{ type: Schema.Types.ObjectId, ref: "Post" }]
+    posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
+    //comments: [{type: Schema.Types.ObjectId, ref: "Comment"}]
   },
   {
     timestamps: true
