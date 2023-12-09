@@ -1,0 +1,16 @@
+<h2>Update a book</h2>
+ 
+<form action="/books/{{_id}}/edit" method="POST">
+  <label> Title:
+    <input type="text" name="title" value="{{title}}" />
+  </label>
+ 
+  <label> Author:
+    <input type="text" name="author" value="{{author}}" />
+  </label>
+ 
+  <label> Description:
+    <textarea name="description" cols="30" rows="4">{{description}}</textarea>
+  </label>
+  <button type="submit"> Update </button>
+</form>
