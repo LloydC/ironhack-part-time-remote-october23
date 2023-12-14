@@ -46,6 +46,7 @@ router.post('/drones/:id/edit', (req, res, next) => {
  const {name, propellers, maxSpeed} = req.body;
 
  Drone.findByIdAndUpdate(req.params.id, req.body)
+ // Drone.findByIdAndUpdate({name, propellers: Number(propellers), maxSpeed: Number(maxSpeed)})
   .then(()=> res.redirect(`/drones/`))
   .catch(err => console.log(err))
  
