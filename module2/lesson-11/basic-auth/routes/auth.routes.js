@@ -43,6 +43,7 @@ router.post("/signup", (req, res, next) => {
                 })
             .catch(err => console.log(err))
 });
+
 /* GET Profile page */
 router.get("/profile", (req, res, next) => {
     res.render("auth/profile");
