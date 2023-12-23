@@ -1,64 +1,29 @@
 const router = require("express").Router();
- 
+ const {movieListController,
+  newCharacterController,
+  createCharacterController,
+  editCharacterController,
+  submitEditCharacterController,
+  deleteCharacterController} = require('../controllers/movies.controller')
 // Require and instantiate the API Service
-const ApiService = require('../services/api.service');
-const apiService = new ApiService();
+// const ApiService = require('../services/api.service');
+// const apiService = new ApiService();
 // List all the characters from the API.
-router.get('/movie-characters/list', (req, res) => {
-    apiService
-    .getAllCharacters()
-    .then((response) => {
-   
-      res.render('pages/characters-list', { characters: response.data }) // <== leave this line commented for now
-    })
-    .catch(error => console.log(error));
-});
+router.get('/movie-characters/list', movieListController);
  
 // Render a form to create a new character.
-router.get('/movie-characters/create', (req, res) => {
-  res.render('pages/new-character-form')
-});
+router.get('/movie-characters/create', newCharacterController);
  
 // Submit info to create a new character.
-router.post('/movie-characters/create', (req, res) => {
-//   console.log('req.body', req.body);
-
-  apiService
-    .createCharacter(req.body)
-    .then(() => res.redirect(`/movie-characters/list`))
-    .catch(error => console.log(error));
-});
+router.post('/movie-characters/create', createCharacterController);
  
 // Render a form to edit a character.
-router.get('/movie-characters/edit/:id', (req, res) => {
-    const { id } = req.params;
-    apiService
-    .getOneCharacter(id)
-    .then(response => {
-        res.render('pages/edit-character-form', {character: response.data})
-    })
-    .catch(error => console.log(error));
-});
+router.get('/movie-characters/edit/:id', editCharacterController);
  
 // Submit info to edit a character with a matching id.
-router.post('/movie-characters/edit/:id', (req, res) => {
-  const { id } = req.params;
-  const { name, occupation, weapon } = req.body;
-
-  apiService
-    .editCharacter(id, { name, occupation, weapon })
-    .then(() => res.redirect(`/movie-characters/list`))
-    .catch(error => console.log(error));
-});
+router.post('/movie-characters/edit/:id', submitEditCharacterController);
  
 // Delete a character with a matching id.
-router.get('/movie-characters/delete/:id', (req, res) => {
-const { id } = req.params;
-
-  apiService
-    .deleteCharacter(id)
-    .then(() => res.redirect(`/movie-characters/list`))
-    .catch(error => console.log(error));
-});
+router.get('/movie-characters/delete/:id', deleteCharacterController);
  
 module.exports = router;
