@@ -28,4 +28,28 @@ router.get('/movies', (req, res) => {
       .catch(error => console.log(`Error while creating a new movie: ${error}`));
   });
 
+  router.get('/movies/:id/edit', (req, res) => {
+    const { id } = req.params;
+   
+    Movie.findById(id)
+      .then(movieToEdit => res.render('movie-views/movie-edit', movieToEdit))
+      .catch(error => console.log(`Error while getting a single movie for edit: ${error}`));
+  });
+
+  // POST route to save changes after updates in a specific movie
+router.post('/movies/:id/edit', fileUploader.single('movie-cover-image'), (req, res) => {
+  const { id } = req.params;
+  const { title, description, existingImage } = req.body;
+ 
+  let imageUrl;
+  if (req.file) {
+    imageUrl = req.file.path;
+  } else {
+    imageUrl = existingImage;
+  }
+ 
+  Movie.findByIdAndUpdate(id, { title, description, imageUrl }, { new: true })
+    .then(() => res.redirect(`/movies`))
+    .catch(error => console.log(`Error while updating a single movie: ${error}`));
+});
 module.exports = router;
