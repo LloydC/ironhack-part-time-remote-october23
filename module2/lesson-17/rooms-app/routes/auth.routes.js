@@ -21,7 +21,7 @@ router.get("/signup", isLoggedOut, (req, res) => {
 });
 
 // POST /auth/signup
-router.post("/signup", isLoggedOut, (req, res) => {
+router.post("/signup", isLoggedOut, async (req, res) => {
   const { email, password } = req.body;
 
   // Check that username, email, and password are provided
@@ -56,28 +56,25 @@ router.post("/signup", isLoggedOut, (req, res) => {
   */
 
   // Create a new user - start by hashing the password
-  bcrypt
-    .genSalt(saltRounds)
-    .then((salt) => bcrypt.hash(password, salt))
-    .then((hashedPassword) => {
-      // Create a user and save it in the database
-      return User.create({ email, password: hashedPassword });
-    })
-    .then((user) => {
-      res.redirect("/auth/login");
-    })
-    .catch((error) => {
+ try {
+  const salt = await bcrypt.genSalt(saltRounds)
+  const hashedPassword = await bcrypt.hash(password, salt)
+  const user =  await User.create({ email, password: hashedPassword });
+  res.redirect("/auth/login");
+ } catch (error) {
       if (error instanceof mongoose.Error.ValidationError) {
-        res.status(500).render("auth/signup", { errorMessage: error.message });
-      } else if (error.code === 11000) {
-        res.status(500).render("auth/signup", {
-          errorMessage:
-            "Username and email need to be unique. Provide a valid username or email.",
-        });
-      } else {
+          res.status(500).render("auth/signup", { errorMessage: error.message });
+      } 
+      else if (error.code === 11000) {
+              res.status(500).render("auth/signup", {
+                errorMessage:
+                  "Username and email need to be unique. Provide a valid username or email.",
+              });
+      } 
+      else {
         next(error);
       }
-    });
+ }
 });
 
 // GET /auth/login

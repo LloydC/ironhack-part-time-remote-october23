@@ -55,21 +55,36 @@ router.get('/posts', (req, res)=>{
 // shows how to deep populate (populate the populated field)
 // ****************************************************************************************
 
-router.get('/posts/:postId', (req, res)=>{
+router.get('/posts/:postId', async (req, res)=>{
   const { postId } = req.params;
 
-  Post.findById(postId)
-      .populate('author comments')
-      .populate({
-        path:'comments',
-        populate: {
-          path: 'author',
-        }
-      })
-      .then((post)=>{
-        console.log('post', post)
-        res.render('posts/details', post)
-      })
+  try {
+    const post = await Post.findById(postId)
+                        .populate('author comments')
+                        .populate({
+                          path:'comments',
+                          populate: {
+                            path: 'author',
+                          }
+                        })
+    console.log('post', post)
+    res.render('posts/details', post)
+  } catch (error) {
+    console.log(error)
+  }
+
+  // Post.findById(postId)
+  //     .populate('author comments')
+  //     .populate({
+  //       path:'comments',
+  //       populate: {
+  //         path: 'author',
+  //       }
+  //     })
+  //     .then((post)=>{
+  //       console.log('post', post)
+  //       res.render('posts/details', post)
+  //     })
 })
 
 router.post('/posts/:postId/comment', (req, res, next) => {
