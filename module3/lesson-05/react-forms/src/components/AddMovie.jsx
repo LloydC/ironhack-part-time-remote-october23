@@ -20,10 +20,11 @@ function AddMovie({ addMovie }) {
     
     e.preventDefault(); // prevents the form from reloading the page
     // Add the logic to create a new movie and add it to the state variable movies
-    const _id = uuidv4();
+    const _id = uuidv4(); // generate a unique identifier
+
     const newMovie = {
-        _id,
-        title, // title: title
+        _id, // add the unique identifier
+        title, // title: title --> state variable 'title' on line 5
         director, // director: director
         IMDBRating,
         hasOscars
