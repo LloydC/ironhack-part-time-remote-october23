@@ -6,8 +6,13 @@ function AddProjectPage(){
     const [technologies, setTechnologies] = useState("");
     const [description, setDescription] = useState("");
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        // Add the data to the db :)
+    }
+
 return (
-    <form action="">
+    <form onSubmit={handleSubmit}>
         <input name="name" value={name} onChange={(event)=> setName(event.target.value)} type="text"  />
         <input name="year" value={year} onChange={(event)=> setYear(Number(event.target.value))} type="number" />
         <input name="technologies" value={technologies} onChange={(event) => setTechnologies(event.target.value)} type="text" />
